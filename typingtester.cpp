@@ -15,7 +15,7 @@
 
 #include "typingtester.hpp"
 
-void tt::initWordList(std::string filename) {
+void TypingTester::initWordList(std::string filename) {
     std::ifstream file;
     char c;
     std::string curr_word;
@@ -32,27 +32,7 @@ void tt::initWordList(std::string filename) {
     }
 }
 
-void tt::LOG(int type, std::string msg) {
-    
-    /*
-     Types:
-     0 = [INFO]
-     1 = [ERROR]
-     2 = [WARNING]
-     */
-    
-    if(type == 0) {
-        printf("[INFO] ");
-    } else if(type == 1) {
-        printf("[ERROR] ");
-    } else if(type == 2) {
-        printf("[WARNING] ");
-    }
-    
-    printf("%s \n", msg.c_str());
-}
-
-std::string tt::getRandomWord() {
+std::string TypingTester::getRandomWord() {
 
     std::string word = "";
 

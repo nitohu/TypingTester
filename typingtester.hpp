@@ -13,15 +13,28 @@
 #include <vector>
 #include <string>
 
-namespace tt {
+//namespace tt {
+//
+//    static std::vector<std::string> word_list;
+//
+//    void LOG(int type, std::string msg);
+//
+//    void initWordList(std::string filename);
+//    std::string getRandomWord();
+//
+//}
+
+class TypingTester {
     
-    static std::vector<std::string> word_list;
+private:
+    std::vector<std::string> word_list;
     
-    void LOG(int type, std::string msg);
-    
+public:
     void initWordList(std::string filename);
-    std::string getRandomWord();
     
-}
+    std::string getRandomWord();
+    std::vector<std::string> getWordList();
+    
+};
 
 #endif /* typingtester_hpp */
