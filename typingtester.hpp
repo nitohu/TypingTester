@@ -32,7 +32,7 @@ private:
 public:
     void initWordList(std::string filename);
     
-    std::string getRandomWord();
+    std::vector<std::string> getRandomWordList(unsigned int amount);
     std::vector<std::string> getWordList();
     
 };

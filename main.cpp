@@ -1,5 +1,7 @@
 #include <future>
 #include <chrono>
+#include <vector>
+#include <string>
 
 #include "typingtester.hpp"
 #include "timer.hpp"
@@ -8,17 +10,22 @@ void LOG(int type, std::string msg);
 
 int main() {
     
-    Timer timer = Timer(1);
+    Timer timer = Timer(3);
     TypingTester tester;
     std::string word;
+    std::vector<std::string> curr_word_list;
+    // List of words the user completed
+    std::vector<std::string> user_complete;
     
     tester.initWordList("words.txt");
+    curr_word_list = tester.getRandomWordList(20);
+    
     LOG(0, "Wordlist initialized");
     
     timer.startTimer();
     
     while(!timer.finished()) {
-        LOG(0, "Not finished");
+        
     }
     
     LOG(0, "Finished");

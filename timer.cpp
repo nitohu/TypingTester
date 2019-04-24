@@ -22,17 +22,13 @@ void Timer::startTimer() {
     this->running = true;
     
     this->timer_thread = std::thread(this->timer, this->duration, &this->running);
-    
     this->timer_thread.detach();
     
 }
 
 void Timer::timer(int duration, bool *running) {
     
-    for(int i = 0; i < duration; i++) {
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-    }
-    
+    std::this_thread::sleep_for(std::chrono::seconds(duration));
     *running = false;
     
 }

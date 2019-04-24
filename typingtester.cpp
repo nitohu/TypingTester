@@ -32,15 +32,17 @@ void TypingTester::initWordList(std::string filename) {
     }
 }
 
-std::string TypingTester::getRandomWord() {
+std::vector<std::string> TypingTester::getRandomWordList(unsigned int amount) {
 
-    std::string word = "";
+    std::vector<std::string> wl;
 
     std::random_device d;
     std::default_random_engine generator(d());
     std::uniform_int_distribution<int> random(0, (int)(word_list.size() - 1));
 
-    word = word_list.at(random(generator));
+    for(int i = 0; i < amount; i++) {
+        wl.push_back(this->word_list.at(random(generator)));
+    }
 
-    return word;
+    return wl;
 }
