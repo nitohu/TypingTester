@@ -16,6 +16,7 @@ class Timer {
     
 private:
     int duration;
+    
     bool running;
     
     std::thread timer_thread;

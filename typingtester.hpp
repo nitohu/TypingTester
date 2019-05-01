@@ -13,17 +13,6 @@
 #include <vector>
 #include <string>
 
-//namespace tt {
-//
-//    static std::vector<std::string> word_list;
-//
-//    void LOG(int type, std::string msg);
-//
-//    void initWordList(std::string filename);
-//    std::string getRandomWord();
-//
-//}
-
 class TypingTester {
     
 private:
@@ -32,7 +21,8 @@ private:
 public:
     void initWordList(std::string filename);
     
-    std::vector<std::string> getRandomWordList(unsigned int amount);
+    void getRandomWordList(std::vector<std::string> &wl, unsigned int amount);
+    
     std::vector<std::string> getWordList();
     
 };

@@ -29,6 +29,7 @@ void Timer::startTimer() {
 void Timer::timer(int duration, bool *running) {
     
     std::this_thread::sleep_for(std::chrono::seconds(duration));
+    
     *running = false;
     
 }

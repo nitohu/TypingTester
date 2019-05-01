@@ -22,27 +22,31 @@ void TypingTester::initWordList(std::string filename) {
     
     file.open(filename);
     
+    if(!file.is_open()) {
+        std::cout << "Wasn't able to open file " + filename << std::endl;
+        exit(0);
+    }
+    
     while(file.get(c)) {
         if(c != '\n') {
             curr_word += c;
         } else {
-            word_list.push_back(curr_word);
+            this->word_list.push_back(curr_word);
             curr_word = "";
         }
     }
 }
 
-std::vector<std::string> TypingTester::getRandomWordList(unsigned int amount) {
-
-    std::vector<std::string> wl;
+void TypingTester::getRandomWordList(std::vector<std::string> &wl, unsigned int amount) {
 
     std::random_device d;
     std::default_random_engine generator(d());
-    std::uniform_int_distribution<int> random(0, (int)(word_list.size() - 1));
-
-    for(int i = 0; i < amount; i++) {
+    std::uniform_int_distribution<int> random(0, ((int)this->word_list.size() - 1));
+    
+    for(unsigned int i = 0; i < amount; i++) {
+        
         wl.push_back(this->word_list.at(random(generator)));
+        
     }
-
-    return wl;
+    
 }
