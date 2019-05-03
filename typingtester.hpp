@@ -23,6 +23,7 @@ public:
     void saveWPM(int wpm);
     
     void getRandomWordList(std::vector<std::string> &wl, unsigned int amount);
+    int getBestScore();
     
     std::vector<std::string> getWordList();
     

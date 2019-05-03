@@ -19,10 +19,37 @@ int main() {
     TypingTester tester;
     std::vector<std::string> curr_word_list;
     
-    setupGame(&tester, &curr_word_list);
-    playGame(&tester, &curr_word_list);
+    int choice = 0;
     
-    LOG(0, "Finished");
+    while(choice >= 0) {
+        std::cout << "Welcome to this Typing Tester." << std::endl;
+        std::cout << "You can specify custom word files/banks at the beginning of a game." << std::endl;
+        std::cout << "\n\tM E N U\n" << std::endl;
+        std::cout << " 1 - Play game" << std::endl;
+        std::cout << " 2 - Get best WPM" << std::endl;
+        std::cout << " 9 - Quit game" << std::endl;
+        
+        std::cout << "> ";
+        std::cin >> choice;
+        
+        switch (choice) {
+            case 1:
+                setupGame(&tester, &curr_word_list);
+                playGame(&tester, &curr_word_list);
+                break;
+            case 2:
+                std::cout << "Your best WPM is " << tester.getBestScore() << std::endl;
+                break;
+            case 9:
+                choice = -1;
+                break;
+            default:
+                std::cout << choice << " is not a valid answer." << std::endl;
+                break;
+        }
+    }
+    
+    LOG(0, "Bye bye");
     
     return 0;
 }
@@ -60,6 +87,8 @@ void LOG(int type, std::string msg) {
     printf("%s \n", msg.c_str());
 }
 
+
+
 void setupGame(TypingTester *tt, std::vector<std::string> *wl) {
     std::string filename;
     
@@ -77,6 +106,7 @@ int playGame(TypingTester *tt, std::vector<std::string> *wl) {
     std::string curr_input = "";
     int word_count = 0;
     int wrong_count = 0;
+    int highscore = tt->getBestScore();
     
     system("clear");
     
@@ -130,6 +160,11 @@ int playGame(TypingTester *tt, std::vector<std::string> *wl) {
     system("stty cooked");
     
     std::cout << "\n";
+    
+    if(highscore < word_count) {
+        tt->saveWPM(word_count);
+        std::cout << "\t*** New Highscore ***" << std::endl;
+    }
     
     LOG(0, ("Your WPM is: " + std::to_string(word_count)));
     LOG(0, ("You have typed " + std::to_string(wrong_count) + " words wrong."));

@@ -55,6 +55,28 @@ void TypingTester::saveWPM(int wpm) {
     
 }
 
+int TypingTester::getBestScore() {
+    std::ifstream file;
+    char c;
+    std::string score;
+    
+    
+    file.open("data/best.txt");
+    
+    if(!file.is_open()) {
+        std::cout << "There was an error opening your 'db'. Please make sure that the folder data/ exists." << std::endl;
+    }
+    
+    while(file.get(c)) {
+        score += c;
+    }
+    
+    if(score.size() > 0) {
+        return std::stoi(score);
+    }
+    return 0;
+}
+
 void TypingTester::getRandomWordList(std::vector<std::string> &wl, unsigned int amount) {
 
     std::random_device d;
