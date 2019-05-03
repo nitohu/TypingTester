@@ -20,6 +20,7 @@ private:
     
 public:
     void initWordList(std::string filename);
+    void saveWPM(int wpm);
     
     void getRandomWordList(std::vector<std::string> &wl, unsigned int amount);
     

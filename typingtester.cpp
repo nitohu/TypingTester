@@ -24,7 +24,7 @@ void TypingTester::initWordList(std::string filename) {
     
     if(!file.is_open()) {
         std::cout << "Wasn't able to open file " + filename << std::endl;
-        exit(0);
+        exit(1);
     }
     
     while(file.get(c)) {
@@ -35,6 +35,24 @@ void TypingTester::initWordList(std::string filename) {
             curr_word = "";
         }
     }
+}
+
+void TypingTester::saveWPM(int wpm) {
+    
+    std::ofstream file;
+    
+    file.open("data/best.txt");
+    
+    if(!file.is_open()) {
+        std::cout << "Wasn't able to save data" << std::endl;
+        exit(1);
+    }
+    
+    
+    file << wpm;
+    
+    file.close();
+    
 }
 
 void TypingTester::getRandomWordList(std::vector<std::string> &wl, unsigned int amount) {
